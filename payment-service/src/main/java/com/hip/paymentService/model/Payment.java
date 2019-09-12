@@ -8,9 +8,9 @@ import lombok.NonNull;
 @Document(collection = "payment")
 public class Payment {
 	@Id
-	private @NonNull int id;
-	private @NonNull int userId;
-	private @NonNull int ammount;
+	private @NonNull String id;
+	private @NonNull String userId;
+	private @NonNull String ammount;
 	private @NonNull boolean detectedAsFraud;
 
 	// Export it to some annotation or other implementation
@@ -22,35 +22,35 @@ public class Payment {
 
 	}
 
-	public Payment(int userId, int ammount) {
+	public Payment(String userId, String ammount) {
 		idGenerator++;
-		this.id = idGenerator;
+		this.id = String.valueOf(idGenerator);
 		this.userId = userId;
 		this.ammount = ammount;
 		this.detectedAsFraud = false;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public int getAmmount() {
+	public String getAmmount() {
 		return ammount;
 	}
 
-	public void setAmmount(int ammount) {
+	public void setAmmount(String ammount) {
 		this.ammount = ammount;
 	}
 
@@ -62,11 +62,4 @@ public class Payment {
 		this.detectedAsFraud = detectedAsFraud;
 	}
 
-	public static int getIdGenerator() {
-		return idGenerator;
-	}
-
-	public static void setIdGenerator(int idGenerator) {
-		Payment.idGenerator = idGenerator;
-	}
 }
